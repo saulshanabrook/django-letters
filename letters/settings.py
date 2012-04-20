@@ -23,13 +23,9 @@ DEBUG = True
 INSTALLED_APPS += (
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.flatpages',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.admin',
-    'django.contrib.staticfiles',
     'django.contrib.markup',
   )
 
@@ -63,6 +59,10 @@ TEMPLATE_DIRS = (
 
 MIDDLEWARE_CLASSES = add_to_middleware(MIDDLEWARE_CLASSES, 'django.middleware.gzip.GZipMiddleware', prepend=True)
 
+#Users
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+
+#Database
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.sqlite3',
