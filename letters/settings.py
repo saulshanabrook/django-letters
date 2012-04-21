@@ -34,12 +34,8 @@ STATICFILES_DIRS = (
     ('letters', rel_path('static')),
   )
 
-MEDIA_URL = '/media/'
-
 STATIC_URL = '/static/'
-STATIC_ROOT = rel_path('../static')
-MEDAIA_ROOT = rel_path('../media')
-
+STATIC_ROOT = rel_path('/static')
 
 #Admin
 LOGIN_URL = '/admin/'
@@ -60,7 +56,7 @@ TEMPLATE_DIRS = (
 MIDDLEWARE_CLASSES = add_to_middleware(MIDDLEWARE_CLASSES, 'django.middleware.gzip.GZipMiddleware', prepend=True)
 
 #Users
-AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+AUTH_PROFILE_MODULE = 'letters.UserProfile'
 
 #Database
 DATABASES = {
@@ -93,11 +89,11 @@ CACHES = {
 ########
 #Security
 ########
-SECURE_FRAME_DENY = True
-SECURE_HSTS_SECONDS = 1
-SESSION_COOKIE_HTTPONLY = True
-USE_I18N = False
-SECRET_KEY = '{{ secret_key }}'
+#SECURE_FRAME_DENY = True
+#SECURE_HSTS_SECONDS = 1
+#SESSION_COOKIE_HTTPONLY = True
+#USE_I18N = False
+SECRET_KEY = 'n39qmq9^(!ab6p31t3ex8zj0q!gp12c&-r_+nrlb#j^v+=!(-r'
 INTERNAL_IPS = '127.0.0.1,23, 21.179.154, 174.129.17.131'
 
 TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.csrf',)
