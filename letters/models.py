@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.template.defaultfilters import slugify
 
 
 class Letter(models.Model):
@@ -18,7 +19,7 @@ class Letter(models.Model):
         auto_now_add=True)
     users_shared_with = models.ManytoManyField(
         User,
-        default=self.author.last_letter_shared_with(),
+        default=author.last_letter_shared_with(),
         verbose_name='Shared with')
 
     class Meta:
@@ -60,7 +61,7 @@ class UserProfile(models.Model):
         """Return the last users with to in a letter"""
         try:
             return self.letter_set.latest().user_shared_with
-        except DoesNotExist:
+        except 'DoesNotExist': #add real error here
             return None
 
     def all_letter_shared_recipients(self):
@@ -74,4 +75,4 @@ class UserProfile(models.Model):
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             UserProfile.objects.create(user=instance)
-        post_save.connect(create_user_profile, sender=User)
+    post_save.connect(create_user_profile, sender=User)
