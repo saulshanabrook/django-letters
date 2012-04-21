@@ -61,7 +61,7 @@ class UserProfile(models.Model):
         """Return the last users with to in a letter"""
         try:
             return self.letter_set.latest().user_shared_with
-        except 'DoesNotExist': #add real error here
+        except 'DoesNotExist':  # add real error here
             return None
 
     def all_letter_shared_recipients(self):
