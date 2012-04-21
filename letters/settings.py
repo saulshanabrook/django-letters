@@ -53,7 +53,10 @@ TEMPLATE_DIRS = (
     rel_path('templates'),
   )
 
-MIDDLEWARE_CLASSES = add_to_middleware(MIDDLEWARE_CLASSES, 'django.middleware.gzip.GZipMiddleware', prepend=True)
+MIDDLEWARE_CLASSES = add_to_middleware(
+    MIDDLEWARE_CLASSES,
+    'django.middleware.gzip.GZipMiddleware',
+    prepend=True)
 
 #Users
 AUTH_PROFILE_MODULE = 'letters.UserProfile'
@@ -74,8 +77,13 @@ DATABASES = {
 #Cache
 ########
 
-MIDDLEWARE_CLASSES = add_to_middleware(MIDDLEWARE_CLASSES, 'django.middleware.cache.UpdateCacheMiddleware', prepend=True)
-MIDDLEWARE_CLASSES = add_to_middleware(MIDDLEWARE_CLASSES, 'django.middleware.cache.FetchFromCacheMiddleware')
+MIDDLEWARE_CLASSES = add_to_middleware(
+    MIDDLEWARE_CLASSES,
+    'django.middleware.cache.UpdateCacheMiddleware',
+    prepend=True)
+MIDDLEWARE_CLASSES = add_to_middleware(
+    MIDDLEWARE_CLASSES,
+    'django.middleware.cache.FetchFromCacheMiddleware')
 
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
 CACHE_MIDDLEWARE_SECONDS = 600

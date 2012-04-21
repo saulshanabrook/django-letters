@@ -13,15 +13,13 @@ urlpatterns = patterns('',
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', TemplateView.as_view(template_name="index.html")),
-    
+
     url(r'^user/(?P<slug>\w+/)$', DetailView.as_view(model=User)),
     url(r'^letter/(?P<year>\d{4})/(?P<month>\d{2})/(?P<title>\w+)/$',
         DetailView.as_view(model=Letter)),
-    
+
     url(r'^robots\.txt$', TextView.as_view(template_name="robots.txt")),
     url(r'^humans\.txt$', TextView.as_view(template_name="humans.txt")),
-
-
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
