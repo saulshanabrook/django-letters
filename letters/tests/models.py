@@ -6,6 +6,8 @@ from django.contrib.admin.models import User
 from letters.models import Letter
 
 user.get_profile()
+
+
 class AnimalTestCase(TestCase):
     def setUp(self):
         now = datetime.datetime.now()
@@ -39,4 +41,3 @@ class AnimalTestCase(TestCase):
         self.assertEqual(self.user_two.all_letters_recipients, None)
         self.assertEqual(self.user_one.all_letters_recipients,
                          [self.user_two, self.user_three])
-    
