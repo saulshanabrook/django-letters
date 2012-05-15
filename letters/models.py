@@ -72,7 +72,8 @@ class UserProfile(models.Model):
         """Return users shared in last comment by author in letter."""
         return Letter.comment_set.filter(author=self).latest()
 
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            UserProfile.objects.create(user=instance)
-    post_save.connect(create_user_profile, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):  
+    if created:  
+       profile, created = UserProfile.objects.get_or_create(user=instance)  
+
+post_save.connect(create_user_profile, sender=User) 
