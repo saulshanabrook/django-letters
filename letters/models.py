@@ -57,18 +57,18 @@ class UserProfile(models.Model):
         self.slug = slugify(self.username)
         super(UserProfile, self).save(*args, **kwargs)
 
-    def last_letter_shared_with(self):
-        """Return the last users with to in a letter"""
+    def last_letter_recipients(self):
+        """Return the last users shared shared to in a letter"""
         try:
-            return self.letter_set.latest().user_shared_with
+            return self.letter_set.latest().users_shared_with
         except 'DoesNotExist':  # add real error here
             return None
 
-    def all_letter_shared_recipients(self):
-        """Return all the users shared letters with"""
+    def all_letters_recipients(self):
+        """Return all the users that user has shared letters with"""
         return self.letter_set.values_list('user_shared_with', flat=True)
 
-    def last_comment_shared_recipients(self, Letter):
+    def last_comment_recipients(self, Letter):
         """Return users shared in last comment by author in letter."""
         return Letter.comment_set.filter(author=self).latest()
 

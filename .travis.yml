@@ -7,3 +7,4 @@ script:
   - "pep8 ."
   - pyflakes -x W .
   - "pylint ."
+  - ./manage.py test
