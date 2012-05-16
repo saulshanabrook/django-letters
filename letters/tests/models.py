@@ -5,8 +5,6 @@ from django.contrib.admin.models import User
 
 from letters.models import Letter
 
-user.get_profile()
-
 
 class AnimalTestCase(TestCase):
     def setUp(self):
@@ -28,6 +26,13 @@ class AnimalTestCase(TestCase):
             author=self.user_one,
             date_time_created=pre_now,
             users_shared_with=[self.user_three, self.user_two])
+
+    def tearDown(self):
+        self.user_one.delete()
+        self.user_two.delete()
+        self.user_three.delete()
+        self.letter_one.delete()
+        self.letter_two.delete()
 
     def test_user_slug(self):
         from django.template.defaultfilters import slugify
