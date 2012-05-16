@@ -6,7 +6,7 @@ from django.contrib.admin.models import User
 from letters.models import Letter
 
 
-class AnimalTestCase(TestCase):
+class UserTest(TestCase):
     def setUp(self):
         now = datetime.datetime.now()
         pre_now = now - datetime.timedelta(days=1)

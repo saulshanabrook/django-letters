@@ -1,9 +1,9 @@
 language: python
 install:
-  - pip install pep8
-  - pip install https://github.com/dcramer/pyflakes/tarball/master
-  - pip install -r requirements.txt --use-mirrors
+  - pip install -q pep8
+  - pip install -q https://github.com/dcramer/pyflakes/tarball/master
+  - pip install -qr requirements.txt --use-mirrors
 script:
   - "pep8 ."
   - pyflakes -x W .
-  - python manage.py test
+  - python manage.py test letters
