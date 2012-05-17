@@ -1,22 +1,13 @@
-from django.conf.global_settings import *
-import datetime
-
 from letters.functions import rel_path, add_to_middleware
+from letters.settings.base import *
 
-########
-#Packages
-########
-INSTALLED_APPS += (
-    'south',
-    'grappelli',
-  )
-
-GRAPPELLI_ADMIN_TITLE = 'Letters'
+DEBUG = True
 
 
 ########
-#Django
+#Gzip
 ########
+<<<<<<< HEAD:letters/settings.py
 SITE_ID = 1
 DEBUG = True
 
@@ -52,16 +43,19 @@ ROOT_URLCONF = 'letters.urls'
 TEMPLATE_DIRS = (
     rel_path('templates'),
   )
+=======
+>>>>>>> e84855f... Broke up into multiples apps:letters/settings/remote.py
 
 MIDDLEWARE_CLASSES = add_to_middleware(
     MIDDLEWARE_CLASSES,
     'django.middleware.gzip.GZipMiddleware',
     prepend=True)
 
-#Users
-AUTH_PROFILE_MODULE = 'letters.UserProfile'
 
+########
 #Database
+########
+
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -97,11 +91,10 @@ CACHES = {
 ########
 #Security
 ########
-#SECURE_FRAME_DENY = True
-#SECURE_HSTS_SECONDS = 1
-#SESSION_COOKIE_HTTPONLY = True
-#USE_I18N = False
+SECURE_FRAME_DENY = True
+SECURE_HSTS_SECONDS = 1
+SESSION_COOKIE_HTTPONLY = True
+USE_I18N = False
 SECRET_KEY = 'n39qmq9^(!ab6p31t3ex8zj0q!gp12c&-r_+nrlb#j^v+=!(-r'
 INTERNAL_IPS = '127.0.0.1,23, 21.179.154, 174.129.17.131'
-
 TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.csrf',)
