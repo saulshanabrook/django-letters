@@ -7,6 +7,10 @@ from letters.functions import rel_path, add_to_middleware
 #Packages
 ########
 INSTALLED_APPS += (
+    'letters.comments',
+    'letters.posts',
+    'letters.users',
+
     'south',
   )
 
@@ -34,14 +38,6 @@ STATICFILES_DIRS = (
 STATIC_URL = '/static/'
 STATIC_ROOT = rel_path('/static')
 
-#Admin
-LOGIN_URL = '/admin/'
-ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
-ADMINS = (
-    ('Saul Shanabrook', 's.shanabrook@gmail.com'),
-  )
-
-
 #Urls
 ROOT_URLCONF = 'letters.urls'
 
@@ -51,4 +47,4 @@ TEMPLATE_DIRS = (
   )
 
 #Users
-AUTH_PROFILE_MODULE = 'letters.UserProfile'
+AUTH_PROFILE_MODULE = 'letters.users.UserProfile'

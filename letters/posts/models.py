@@ -1,5 +1,7 @@
 from django.db import models
 
+from lettters.users.models import User
+
 
 class Letter(models.Model):
     title = models.CharField(

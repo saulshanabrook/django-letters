@@ -1,5 +1,8 @@
 from django.db import models
 
+from letters.posts.models import Letter
+from letters.users.models import User
+
 
 class Comment(models.model):
     letter = models.ForeignKey(Letter, editable=False)
