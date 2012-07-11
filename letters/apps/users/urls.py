@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic import DetailView
 
-from letters.users.models import User
+from .models import User
 
 
 urlpatterns = patterns('',

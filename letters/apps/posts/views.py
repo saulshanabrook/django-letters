@@ -1,6 +1,7 @@
 from django.views.generic import DetailView
-from letters.models import Letter
 from django.shortcuts import get_object_or_404
+
+from .models import Letter
 
 
 class LetterDetailView(DetailView):

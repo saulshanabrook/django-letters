@@ -1,4 +1,3 @@
-
 def add_to_middleware(MIDDLEWARE_CLASSES_old, middleware, prepend=False):
     if middleware not in MIDDLEWARE_CLASSES_old:
         if prepend:

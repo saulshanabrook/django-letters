@@ -4,7 +4,7 @@ from django.conf.global_settings import *
 
 from ..functions import add_to_middleware
 
-DIRNAME = os.path.dirname(__file__)
+DIRNAME = os.path.join(os.path.dirname(__file__), '../')
 
 ########
 #Letters
@@ -65,6 +65,8 @@ MIDDLEWARE_CLASSES = add_to_middleware(MIDDLEWARE_CLASSES,
                                        'django.middleware.gzip.GZipMiddleware',
                                        prepend=True)
 DATE_FORMAT = 'F j, Y'
+
+#
 
 ########
 #Security

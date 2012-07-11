@@ -1,1 +1,1 @@
-from letters.users.tests.models_tests import *
+from .models import UserTest

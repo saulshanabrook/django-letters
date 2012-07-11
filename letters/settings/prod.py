@@ -20,7 +20,15 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
 ########
-# Server
+#Server
 ########
 INSTALLED_APPS += ('gunicorn',)
 INTERNAL_IPS = ('0.0.0.0',)
+
+
+########
+#Optimizations
+########
+MIDDLEWARE_CLASSES = add_to_middleware(MIDDLEWARE_CLASSES,
+                                       'django.middleware.gzip.GZipMiddleware',
+                                       prepend=True)

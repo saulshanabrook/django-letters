@@ -3,22 +3,18 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.template.defaultfilters import slugify
 
-from letters.posts.models import Letter
+from ..posts.models import Letter
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     slug = models.SlugField()
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.username)
-        super(UserProfile, self).save(*args, **kwargs)
-
     def last_letter_recipients(self):
-        """Return the last users shared shared to in a letter"""
+        """Return the last users shared to in a letter"""
         try:
-            return self.letter_set.latest().users_shared_with
-        except 'DoesNotExist':  # add real error here
+            return self.letter_set.latest().shared_with
+        except 'DoesNotExist':
             return None
 
     def all_letters_recipients(self):
@@ -27,7 +23,7 @@ class UserProfile(models.Model):
 
     def last_comment_recipients(self, Letter):
         """Return users shared in last comment by author in letter."""
-        return Letter.comment_set.filter(author=self).latest()
+        return Letter.comment_set.filter(author=self).latest().shared_with
 
 
 def create_user_profile(sender, instance, created, **kwargs):
